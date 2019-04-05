@@ -13,6 +13,6 @@ run `make setup`
   - [protoc-gen-go](https://github.com/golang/protobuf/tree/master/protoc-gen-go)
   - [protoc-gen-gohttp](https://github.com/nametake/protoc-gen-gohttp)
 
-## compiling proto file
+## compile and generate stub from proto file
 
 run `make gen`

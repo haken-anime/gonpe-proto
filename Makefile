@@ -38,8 +38,7 @@ version:
 	prototool version
 
 gen:
-	OUT_PATH=$(ROOT)/out
-	protoc --go_out=plugins=grpc:$(OUT_PATH) --gohttp_out=$(OUT_PATH) **\/*.proto
+	prototool generate .
 
 lint:
 	prototool lint .

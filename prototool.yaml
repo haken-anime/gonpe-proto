@@ -2,3 +2,13 @@ protoc:
   version: 3.7.1
 lint:
   group: uber2
+generate:
+  go_options:
+    import_path: github.com/haken-anime/gonpe-proto
+  plugins:
+    - name: go
+      type: go
+      flags: plugins=grpc
+      output: ./gen/go
+    - name: gohttp
+      output: ./gen/go
