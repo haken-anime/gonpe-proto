@@ -1,0 +1,4 @@
+github.com/golang/protobuf v1.3.1 h1:YF8+flBXS5eO826T4nzqPrxfhQThhXl0YzfuUPu4SBg=
+github.com/golang/protobuf v1.3.1/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
+github.com/nametake/protoc-gen-gohttp v0.0.0-20181205022937-3d25ec05fe00 h1:5PQNkQRdsuP+X4rcW6R+MjnpGUFWYsaPanx8mk59RxY=
+github.com/nametake/protoc-gen-gohttp v0.0.0-20181205022937-3d25ec05fe00/go.mod h1:1GzvmTIe2ewltKkrFV5zUVzCo7PdAXJGu/J+suiz5Os=
