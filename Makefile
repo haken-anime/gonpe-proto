@@ -7,6 +7,7 @@ MAKEFLAGS=--no-builtin-rules \
 OS := $(shell uname -s)
 ROOT := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 BIN_PATH := $(ROOT)/bin
+GOOGLE_PROTO_PATH := $(ROOT)/google
 SCRIPT_PATH := $(ROOT)/scripts
 ifeq ($(OS),Darwin)
 export SHELL := $(shell echo $$SHELL)
@@ -23,7 +24,7 @@ init:
 setup: install/tool gobuild
 
 install/tool: init
-	install_protoc.sh $(BIN_PATH)
+	install_protoc.sh $(BIN_PATH) $(GOOGLE_PROTO_PATH)
 	curl -sSL https://github.com/uber/prototool/releases/download/v1.5.0/prototool-$$(uname -s)-$$(uname -m) -o $(BIN_PATH)/prototool && chmod +x $(BIN_PATH)/prototool
 
 gobuild: init
@@ -32,6 +33,7 @@ gobuild: init
 
 clean:
 	rm -rf $(BIN_PATH)
+	rm -rf $(GOOGLE_PROTO_PATH)
 
 version:
 	protoc --version

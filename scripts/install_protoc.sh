@@ -5,7 +5,8 @@ set -eu
 download_dirpath="$(mktemp -d)"
 
 main() {
-    local dst_path=$1
+    local bin_path=$1
+    local google_proto_path=$2
     local protoc_zip_filepath="${download_dirpath}/protoc.zip"
     local download_url=""
     case "$(uname -s)" in
@@ -27,8 +28,11 @@ main() {
     green "unzip"
     unzip "${protoc_zip_filepath}" -d "${download_dirpath}/protoc"
 
-    green "copy protoc binary to dst_path: ${dst_path}"
-    cp "${download_dirpath}/protoc/bin/protoc" "${dst_path}"
+    green "copy protoc binary to dst_path: ${bin_path}"
+    cp "${download_dirpath}/protoc/bin/protoc" "${bin_path}"
+
+    green "copy google's proto file: ${google_proto_path}"
+    cp -a "${download_dirpath}/protoc/include/google" "${google_proto_path}"
 }
 
 cleanup() {
