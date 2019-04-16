@@ -39,7 +39,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "1e:e9:74:11:4e:f6:ba:93:81:5e:51:62:8d:5d:ef:33"
+            - "f1:8e:a2:61:32:3e:dd:af:71:58:fd:6b:b7:0e:59:5b"
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - attach_workspace:
           at: .
@@ -64,7 +64,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "1e:e9:74:11:4e:f6:ba:93:81:5e:51:62:8d:5d:ef:33"
+            - "f1:8e:a2:61:32:3e:dd:af:71:58:fd:6b:b7:0e:59:5b"
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - attach_workspace:
           at: .
