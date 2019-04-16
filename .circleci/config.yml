@@ -76,8 +76,7 @@ jobs:
           name: update pb files
           command: |
             find /tmp/gonpe-pb -name "*.go" -exec rm {} \;
-            cd gen
-            find . -name "*.go" | xargs cp --parents -t /tmp/gonpe-pb
+            cp -r gen/go/ /tmp/gonpe-pb
       - run:
           name: commit and push pb files
           command: |
