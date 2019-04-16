@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package gonpe.auth.v1;
+
+option csharp_namespace = "Gonpe.Auth.V1";
+option go_package = "authv1";
+option java_multiple_files = true;
+option java_outer_classname = "AuthApiProto";
+option java_package = "com.gonpe.auth.v1";
+option objc_class_prefix = "GAX";
+option php_namespace = "Gonpe\\Auth\\V1";
+
+// Handles interaction with authn/authz.
+service AuthAPI {
+    // Registration user.
+    rpc SignUp(SignUpRequest) returns (SignUpResponse);
+}
+
+message SignUpRequest {
+    string email = 1;
+}
+
+message SignUpResponse {
+}

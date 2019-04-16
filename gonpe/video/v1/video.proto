@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package gonpe.video.v1;
+
+option csharp_namespace = "Gonpe.Video.V1";
+option go_package = "videov1";
+option java_multiple_files = true;
+option java_outer_classname = "VideoProto";
+option java_package = "com.gonpe.video.v1";
+option objc_class_prefix = "GVX";
+option php_namespace = "Gonpe\\Video\\V1";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+
+// A video content classification.
+enum Category {
+    CATEGORY_UNKNOWN = 0;
+    CATEGORY_ANIMATION = 1;
+    CATEGORY_MUSIC = 2;
+    CATEGORY_VARIETY = 3;
+    CATEGORY_DRAMA = 4;
+    CATEGORY_CINEMA = 5;
+    CATEGORY_SPORT = 6;
+    CATEGORY_INFORMATION = 7;
+    CATEGORY_NEWS = 8;
+    CATEGORY_DOCUMENTARY = 9;
+    CATEGORY_THEATER = 10;
+    CATEGORY_HOBBY = 11;
+    CATEGORY_WELFARE = 12;
+    CATEGORY_ETC = 13;
+}
+
+// A video publishing status.
+enum Status {
+    STATUS_UNREGISTERED = 0;
+    STATUS_REGISTERED = 1;
+    STATUS_PUBLISHED = 2;
+    STATUS_ARCHIVED = 3;
+    STATUS_TEMPORARY_RESTORED = 4;
+}
+
+// A video information.
+message Video {
+    string short_id = 1;
+    string video_url = 2;
+    string thumbnail_url = 3;
+    string title = 4;
+    string description = 5;
+    gonpe.video.v1.Category category = 6;
+    gonpe.video.v1.Status status = 7;
+    double chapter = 8;
+    google.protobuf.Duration duration = 9;
+    int64 file_size_bytes = 10;
+    google.protobuf.Timestamp recorded_at = 11;
+}
