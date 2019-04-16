@@ -76,7 +76,7 @@ jobs:
           name: update pb files
           command: |
             rm -rf /tmp/gonpe-pb/*
-            cp -r gen/go/* /tmp/gonpe-pb
+            cp -r gen/go/gonpe/* /tmp/gonpe-pb
       - run:
           name: commit and push pb files
           command: |
