@@ -7,6 +7,7 @@ MAKEFLAGS=--no-builtin-rules \
 OS := $(shell uname -s)
 ROOT := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 BIN_PATH := $(ROOT)/bin
+PROTO_PATH := $(ROOT)/gonpe
 GOOGLE_PROTO_PATH := $(ROOT)/google
 SCRIPT_PATH := $(ROOT)/scripts
 ifeq ($(OS),Darwin)
@@ -16,12 +17,12 @@ endif
 # set path
 export PATH := $(BIN_PATH):$(SCRIPT_PATH):$(PATH)
 
-.PHONY: setup clean version
+.PHONY: all clean version
+
+all: install/tool gobuild lint gen
 
 init:
 	mkdir -p $(BIN_PATH)
-
-setup: install/tool gobuild
 
 install/tool: init
 	install_protoc.sh $(BIN_PATH) $(GOOGLE_PROTO_PATH)
@@ -40,7 +41,7 @@ version:
 	prototool version
 
 gen:
-	prototool generate .
+	prototool generate $(PROTO_PATH)
 
 lint:
-	prototool lint .
+	prototool lint $(PROTO_PATH)
