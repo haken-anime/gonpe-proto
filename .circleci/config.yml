@@ -75,7 +75,7 @@ jobs:
       - run:
           name: update pb files
           command: |
-            rm -rf /tmp/gonpe-pb/*
+            find /tmp/gonpe-pb -name "*.go" -exec rm {} \;
             cp -r gen/go/* /tmp/gonpe-pb
       - run:
           name: commit and push pb files
