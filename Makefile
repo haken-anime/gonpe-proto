@@ -8,6 +8,7 @@ OS := $(shell uname -s)
 ROOT := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 BIN_PATH := $(ROOT)/bin
 PROTO_PATH := $(ROOT)/gonpe
+GEN_PATH := $(ROOT)/gen
 GOOGLE_PROTO_PATH := $(ROOT)/google
 SCRIPT_PATH := $(ROOT)/scripts
 ifeq ($(OS),Darwin)
@@ -17,9 +18,11 @@ endif
 # set path
 export PATH := $(BIN_PATH):$(SCRIPT_PATH):$(PATH)
 
-.PHONY: all clean version
+.PHONY: all version
 
-all: install/tool gobuild lint gen
+all: setup lint gen
+
+setup: clean/tool install/tool gobuild
 
 init:
 	mkdir -p $(BIN_PATH)
@@ -32,16 +35,20 @@ gobuild: init
 	go build -o $(BIN_PATH)/protoc-gen-go github.com/golang/protobuf/protoc-gen-go
 	go build -o $(BIN_PATH)/protoc-gen-gohttp github.com/nametake/protoc-gen-gohttp
 
-clean:
+clean/tool:
 	rm -rf $(BIN_PATH)
 	rm -rf $(GOOGLE_PROTO_PATH)
+
+clean/gen:
+	rm -rf $(GEN_PATH)
 
 version:
 	protoc --version
 	prototool version
 
-gen:
+gen: clean/gen
 	prototool generate $(PROTO_PATH)
+
 
 lint:
 	prototool lint $(PROTO_PATH)

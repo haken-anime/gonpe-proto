@@ -1,7 +1,14 @@
 protoc:
   version: 3.7.1
+  includes:
+    - google
 lint:
   group: uber2
+  rules:
+    no_default: true
+    remove:
+      - ENUM_ZERO_VALUES_INVALID_EXCEPT_MESSAGE
+      - WKT_TIMESTAMP_SUFFIX
 generate:
   go_options:
     import_path: github.com/haken-anime/gonpe-proto
