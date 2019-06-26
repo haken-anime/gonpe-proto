@@ -10,22 +10,30 @@ option java_package = "com.gonpe.video.v1";
 option objc_class_prefix = "GVX";
 option php_namespace = "Gonpe\\Video\\V1";
 
+import "gonpe/pagination/v1/pager.proto";
 import "gonpe/video/v1/video.proto";
 
 // Handles interaction with videos.
 service VideoAPI {
-    // Get videos in descending order of recording at.
-    rpc ListRecentlyVideos(ListRecentlyVideosRequest) returns (ListRecentlyVideosResponse);
+  // Get videos in descending order of recording at.
+  rpc ListRecentlyVideos(ListRecentlyVideosRequest) returns (ListRecentlyVideosResponse);
+  // Get video details.
+  rpc GetVideo(GetVideoRequest) returns (GetVideoResponse);
 }
 
 message ListRecentlyVideosRequest {
-    int64 page = 1;
-    int64 per_page = 2;
+  gonpe.pagination.v1.PagerInput page = 1;
 }
 
 message ListRecentlyVideosResponse {
-    repeated gonpe.video.v1.Video videos = 1;
-    int64 count = 2;
-    bool exist_prev = 3;
-    bool exist_next = 4;
+  repeated gonpe.video.v1.VideoForList videos = 1;
+  gonpe.pagination.v1.PagerOutput page = 2;
+}
+
+message GetVideoRequest {
+  string short_id = 1;
+}
+
+message GetVideoResponse {
+  gonpe.video.v1.Video video = 1;
 }

@@ -10,7 +10,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.12.4
+      - image: circleci/golang:1.12.6
         environment:
           GO111MODULE: "on"
 
@@ -93,7 +93,7 @@ jobs:
 
   prototool-lint:
     docker:
-      - image: circleci/golang:1.12.4
+      - image: circleci/golang:1.12.6
         environment:
           GO111MODULE: "on"
 

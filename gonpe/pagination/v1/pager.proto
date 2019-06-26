@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package gonpe.pagination.v1;
+
+option csharp_namespace = "Gonpe.Pagination.V1";
+option go_package = "paginationv1";
+option java_multiple_files = true;
+option java_outer_classname = "PagerProto";
+option java_package = "com.gonpe.pagination.v1";
+option objc_class_prefix = "GPX";
+option php_namespace = "Gonpe\\Pagination\\V1";
+
+// A pagination request attributes.
+message PagerInput {
+  int64 number = 1;
+  int64 limit = 2;
+}
+
+// A pagination response attributes.
+message PagerOutput {
+  int64 current_number = 1;
+  int64 count = 2;
+  bool exist_prev = 3;
+  bool exist_next = 4;
+}

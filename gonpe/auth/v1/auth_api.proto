@@ -12,13 +12,12 @@ option php_namespace = "Gonpe\\Auth\\V1";
 
 // Handles interaction with authn/authz.
 service AuthAPI {
-    // Registration user.
-    rpc SignUp(SignUpRequest) returns (SignUpResponse);
+  // Registration user.
+  rpc SignUp(SignUpRequest) returns (SignUpResponse);
 }
 
 message SignUpRequest {
-    string email = 1;
+  string email = 1;
 }
 
-message SignUpResponse {
-}
+message SignUpResponse {}
